@@ -39,71 +39,71 @@
 ---
 
 ### ✅ Caso de uso: Validar admin en distribución
-**Estado:** ⏳ Pendiente
+**Estado:** ✅ Completado
 
 **Descripción:** Antes de distribuir fondos, se debe verificar que la wallet que invoca es el admin registrado.
 
 **Criterios de aceptación:**
-- [ ] La dirección usada para firmar la transacción debe coincidir exactamente con la dirección almacenada
-- [ ] Si la firma no coincide, la función debe abortar con error
-- [ ] Debe ejecutarse require_auth() sobre la wallet del admin
-- [ ] No se puede continuar con distribución si no se cumple la autenticación
+- [x] La dirección usada para firmar la transacción debe coincidir exactamente con la dirección almacenada
+- [x] Si la firma no coincide, la función debe abortar con error
+- [x] Debe ejecutarse require_auth() sobre la wallet del admin
+- [x] No se puede continuar con distribución si no se cumple la autenticación
 
 ---
 
 ### ✅ Caso de uso: Validar parámetros de distribución
-**Estado:** ⏳ Pendiente
+**Estado:** ✅ Completado
 
 **Descripción:** Verificar que la entrada del usuario es válida antes de transferir fondos.
 
 **Criterios de aceptación:**
-- [ ] recipients debe contener al menos 1 wallet
-- [ ] total_amount debe ser un entero positivo
-- [ ] El monto total debe ser divisible en partes iguales por la cantidad de destinatarios
-- [ ] amount_each debe ser mayor que 0; si no, debe abortar
-- [ ] Si recipients está vacío, la llamada debe fallar inmediatamente
-- [ ] Si total_amount es menor que la cantidad de destinatarios, la transacción falla
+- [x] recipients debe contener al menos 1 wallet
+- [x] total_amount debe ser un entero positivo
+- [x] El monto total debe ser divisible en partes iguales por la cantidad de destinatarios
+- [x] amount_each debe ser mayor que 0; si no, debe abortar
+- [x] Si recipients está vacío, la llamada debe fallar inmediatamente
+- [x] Si total_amount es menor que la cantidad de destinatarios, la transacción falla
 
 ---
 
 ### ✅ Caso de uso: Cálculo de distribución
-**Estado:** ⏳ Pendiente
+**Estado:** ✅ Completado
 
 **Descripción:** Calcular con precisión cuánto recibe cada wallet.
 
 **Criterios de aceptación:**
-- [ ] amount_each = total_amount / len(recipients)
-- [ ] El cálculo debe ser exacto usando tipo i128
-- [ ] No debe haber truncamiento no deseado: si la división deja residuo, el sistema debe aceptarlo siempre que amount_each sea mayor a 0
-- [ ] Debe registrarse internamente el valor calculado por si se desea auditar
+- [x] amount_each = total_amount / len(recipients)
+- [x] El cálculo debe ser exacto usando tipo i128
+- [x] No debe haber truncamiento no deseado: si la división deja residuo, el sistema debe aceptarlo siempre que amount_each sea mayor a 0
+- [x] Debe registrarse internamente el valor calculado por si se desea auditar
 
 ---
 
 ### ✅ Caso de uso: Enviar pagos desde el contrato
-**Estado:** ⏳ Pendiente
+**Estado:** ✅ Completado
 
 **Descripción:** Ejecución efectiva de los envíos a cada wallet desde el baúl del contrato.
 
 **Criterios de aceptación:**
-- [ ] El envío debe usar env.payments().pay(destinatario, amount_each)
-- [ ] Cada wallet recibe exactamente el valor calculado
-- [ ] La transacción debe enviar todos los pagos dentro de la misma operación
-- [ ] Si algún pago falla, toda la operación debe revertir
-- [ ] El contrato solo envía fondos que ya tiene en su balance
-- [ ] No debe enviarse más de lo permitido por total_amount
+- [x] El envío usa token_client.transfer() para cada destinatario
+- [x] Cada wallet recibe exactamente el valor calculado
+- [x] La transacción debe enviar todos los pagos dentro de la misma operación
+- [x] Si algún pago falla, toda la operación debe revertir
+- [x] El contrato solo envía fondos que ya tiene en su balance
+- [x] No debe enviarse más de lo permitido por total_amount
 
 ---
 
 ### ✅ Caso de uso: Emitir eventos
-**Estado:** ⏳ Pendiente
+**Estado:** ✅ Completado
 
 **Descripción:** Registrar un evento posterior a la distribución para auditoría.
 
 **Criterios de aceptación:**
-- [ ] Debe emitirse un evento bajo las claves ("vault", "distributed")
-- [ ] El evento debe incluir el total_amount
-- [ ] El evento debe generarse solo cuando la distribución termina correctamente
-- [ ] Si ocurre un error previo, no se debe emitir evento
+- [x] Debe emitirse un evento bajo las claves ("vault", "distribtd")
+- [x] El evento debe incluir el total_amount y número de destinatarios
+- [x] El evento debe generarse solo cuando la distribución termina correctamente
+- [x] Si ocurre un error previo, no se debe emitir evento
 
 ---
 
@@ -197,10 +197,10 @@ stellar contract invoke \
 
 ## 🎯 Progreso General
 - **Total de casos de uso:** 12
-- **Completados:** 2
+- **Completados:** 7
 - **En progreso:** 0
-- **Pendientes:** 10
-- **Progreso:** 16.67%
+- **Pendientes:** 5
+- **Progreso:** 58.33%
 
 ---
 
