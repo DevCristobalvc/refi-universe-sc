@@ -625,19 +625,37 @@
           "v0": {
             "topics": [
               {
-                "symbol": "vault"
+                "string": "VaultDistributor"
               },
               {
-                "symbol": "distribtd"
+                "string": "distribution_completed"
               }
             ],
             "data": {
-              "vec": [
+              "map": [
                 {
-                  "i128": "500"
+                  "key": {
+                    "symbol": "amount_each"
+                  },
+                  "val": {
+                    "i128": "500"
+                  }
                 },
                 {
-                  "i128": "1"
+                  "key": {
+                    "symbol": "num_recipients"
+                  },
+                  "val": {
+                    "u32": 1
+                  }
+                },
+                {
+                  "key": {
+                    "symbol": "total_amount"
+                  },
+                  "val": {
+                    "i128": "500"
+                  }
                 }
               ]
             }
